@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Text, StyleSheet, View} from 'react-native';
-import BirthdaysContext from './contexts/BirthdaysContext';
+import useBirthdayStore from './hooks/useBirthdayStore';
 
 export default function BirthdayList() {
-  const [birthdays, setBirthday] = useContext(BirthdaysContext);
+  const {birthdays} = useBirthdayStore();
 
   return (
     <View style={styles.birthdayList}>

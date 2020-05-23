@@ -7,12 +7,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-import BirthdaysContext from './contexts/BirthdaysContext';
+import useBirthdayStore from './hooks/useBirthdayStore';
 
 export default function BirthdayForm() {
   const [name, onChangeName] = React.useState('');
   const [date, onChangeDate] = React.useState(new Date());
-  const [birthdays, setBirthdays] = useContext(BirthdaysContext);
+  const {addBirthday} = useBirthdayStore();
 
   return (
     <View style={styles.addForm}>
@@ -26,7 +26,7 @@ export default function BirthdayForm() {
       <DatePicker mode="date" date={date} onDateChange={onChangeDate} />
       <TouchableOpacity
         onPress={() => {
-          setBirthdays([...birthdays, {name, date}]);
+          addBirthday({name, date});
         }}
         style={styles.button}>
         <Text style={styles.buttonText}>Save</Text>
