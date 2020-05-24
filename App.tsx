@@ -1,16 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SafeAreaView, StyleSheet, ScrollView, StatusBar} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import BirthdayForm from './src/BirthdayForm';
 import BirthdayList from './src/BirthdayList';
-import BirthdaysContext, {Birthday} from './src/contexts/BirthdaysContext';
+import BirthdayProvider from './src/contexts/BirthdayProvider';
 
 const App = () => {
-  const birthdaysHook = useState<Birthday[]>([]);
-
   return (
-    <BirthdaysContext.Provider value={birthdaysHook}>
+    <BirthdayProvider>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView>
         <ScrollView
@@ -20,7 +18,7 @@ const App = () => {
           <BirthdayList />
         </ScrollView>
       </SafeAreaView>
-    </BirthdaysContext.Provider>
+    </BirthdayProvider>
   );
 };
 

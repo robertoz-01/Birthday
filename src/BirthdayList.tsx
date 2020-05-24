@@ -11,7 +11,9 @@ export default function BirthdayList() {
         return (
           <View style={styles.birthdayEntry}>
             <View style={styles.dateBox}>
-              <Text>{`${bd.date.getDate()}/${bd.date.getMonth()}/${bd.date.getFullYear()}`}</Text>
+              <Text>{`${bd.date.getDate()}/${
+                bd.date.getMonth() + 1
+              }/${bd.date.getFullYear()}`}</Text>
             </View>
             <Text>{bd.name}</Text>
           </View>
@@ -26,6 +28,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#606060',
     borderTopWidth: 1,
     marginLeft: 15,
+    marginRight: 15,
     marginTop: 20,
   },
   dateBox: {
