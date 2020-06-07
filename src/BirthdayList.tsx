@@ -6,7 +6,7 @@ export default function BirthdayList() {
   const {birthdays} = useBirthdayStore();
 
   return (
-    <View style={styles.birthdayList}>
+    <View style={styles.birthdayList} testID={'birthdayList'}>
       {birthdays.map((bd) => {
         return (
           <View style={styles.birthdayEntry}>
