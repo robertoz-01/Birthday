@@ -6,20 +6,23 @@ export default function BirthdayList() {
   const {birthdays} = useBirthdayStore();
 
   return (
-    <View style={styles.birthdayList} testID={'birthdayList'}>
-      {birthdays.map((bd) => {
-        return (
-          <View style={styles.birthdayEntry}>
-            <View style={styles.dateBox}>
-              <Text>{`${bd.date.getDate()}/${
-                bd.date.getMonth() + 1
-              }/${bd.date.getFullYear()}`}</Text>
+    <>
+      <Text style={styles.birthdayListHeader}>All Birthdays</Text>
+      <View style={styles.birthdayList} testID={'birthdayList'}>
+        {birthdays.map((bd) => {
+          return (
+            <View style={styles.birthdayEntry} key={bd.id}>
+              <View style={styles.dateBox}>
+                <Text>{`${bd.date.getDate()}/${
+                  bd.date.getMonth() + 1
+                }/${bd.date.getFullYear()}`}</Text>
+              </View>
+              <Text>{bd.name}</Text>
             </View>
-            <Text>{bd.name}</Text>
-          </View>
-        );
-      })}
-    </View>
+          );
+        })}
+      </View>
+    </>
   );
 }
 
@@ -33,6 +36,12 @@ const styles = StyleSheet.create({
   },
   dateBox: {
     width: 80,
+  },
+  birthdayListHeader: {
+    fontSize: 22,
+    marginTop: 10,
+    marginBottom: 10,
+    textAlign: 'center',
   },
   birthdayEntry: {
     flexDirection: 'row',
