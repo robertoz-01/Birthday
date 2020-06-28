@@ -5,6 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import BirthdayForm from './src/BirthdayForm';
 import BirthdayList from './src/BirthdayList';
+import NextBirthday from './src/NextBirthday';
 import BirthdayProvider from './src/contexts/BirthdayProvider';
 
 const Tab = createBottomTabNavigator();
@@ -14,7 +15,8 @@ const App = () => {
     <NavigationContainer>
       <BirthdayProvider>
         <Tab.Navigator>
-          <Tab.Screen name="Birthdays" component={BirthdayList} />
+          <Tab.Screen name="Next Birthday" component={NextBirthday} />
+          <Tab.Screen name="All Birthdays" component={BirthdayList} />
           <Tab.Screen name="Add Birthday" component={BirthdayForm} />
         </Tab.Navigator>
       </BirthdayProvider>

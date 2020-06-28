@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import uuid from 'uuid-random';
 import BirthdaysContext, {Birthday} from '../contexts/BirthdaysContext';
 import {setYear, getYear, differenceInDays} from 'date-fns';

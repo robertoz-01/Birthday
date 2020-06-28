@@ -1,4 +1,3 @@
-import React from 'react';
 import {renderHook, act} from '@testing-library/react-hooks';
 import {addMonths, subYears} from 'date-fns';
 import useBirthdayStore from '../../src/hooks/useBirthdayStore';
