@@ -26,7 +26,6 @@ test('nextBirthday returns the next happening birthday', () => {
   const {result: hook} = renderHook(() => useBirthdayStore(), {
     wrapper: BirthdayProvider,
   });
-  expect(hook.current.birthdays).toEqual([]);
 
   act(() => {
     hook.current.addBirthday({
@@ -50,4 +49,34 @@ test('nextBirthday returns the next happening birthday', () => {
   });
 
   expect(hook.current.nextBirthday().name).toEqual('Grandma');
+});
+
+test('nextBirthday returns also a birthday in a previous day of the year if no following', () => {
+  const {result: hook} = renderHook(() => useBirthdayStore(), {
+    wrapper: BirthdayProvider,
+  });
+
+  act(() => {
+    hook.current.addBirthday({
+      date: subYears(addMonths(Date.now(), -2), 30),
+      name: 'Me',
+    });
+  });
+
+  act(() => {
+    hook.current.addBirthday({
+      date: subYears(addMonths(Date.now(), -1), 60),
+      name: 'Dad',
+    });
+  });
+
+  expect(hook.current.nextBirthday().name).toEqual('Me');
+});
+
+test('nextBirthday returns nothing if no birthday is given', () => {
+  const {result: hook} = renderHook(() => useBirthdayStore(), {
+    wrapper: BirthdayProvider,
+  });
+
+  expect(hook.current.nextBirthday()).toEqual(undefined);
 });

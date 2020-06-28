@@ -21,10 +21,14 @@ const useBirthdayStore = () => {
         setYear(bdate2.date, thisYear),
       ),
     );
-    return sortedBirthdays.find(
+    const nextMonthBirthday = sortedBirthdays.find(
       (bdate) =>
         differenceInDays(setYear(bdate.date, thisYear), Date.now()) >= 0,
     );
+    if (nextMonthBirthday) {
+      return nextMonthBirthday;
+    }
+    return sortedBirthdays[0];
   };
 
   return {birthdays, addBirthday, nextBirthday};
