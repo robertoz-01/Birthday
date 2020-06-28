@@ -20,8 +20,8 @@ it('renders no birthdays', () => {
 it('renders some birthdays', () => {
   useBirthdayStore.mockReturnValue({
     birthdays: [
-      {name: 'Roberto', date: new Date(1986, 11, 18, 0, 0, 0, 0)},
-      {name: 'Test', date: new Date(1985, 10, 14, 0, 0, 0, 0)},
+      {name: 'Roberto', date: new Date(1986, 11, 18, 0, 0, 0, 0), id: 'aaa'},
+      {name: 'Test', date: new Date(1985, 10, 14, 0, 0, 0, 0), id: 'bbb'},
     ],
   });
 
