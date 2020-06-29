@@ -5,6 +5,8 @@ import {render} from 'react-native-testing-library';
 import useBirthdayStore from '../src/hooks/useBirthdayStore';
 jest.mock('../src/hooks/useBirthdayStore');
 
+jest.mock('@react-navigation/native');
+
 import BirthdayList from '../src/BirthdayList';
 
 it('renders no birthdays', () => {

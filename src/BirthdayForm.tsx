@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {
   Text,
   TextInput,
@@ -8,11 +8,18 @@ import {
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import useBirthdayStore from './hooks/useBirthdayStore';
+import {useNavigation} from '@react-navigation/native';
 
 export default function BirthdayForm() {
   const [name, onChangeName] = React.useState('');
   const [date, onChangeDate] = React.useState(new Date());
   const {addBirthday} = useBirthdayStore();
+  const navigation = useNavigation();
+
+  const onPressSave = () => {
+    addBirthday({name, date});
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.addForm}>
@@ -24,11 +31,7 @@ export default function BirthdayForm() {
       />
       <Text style={styles.formLabel}>Birthday</Text>
       <DatePicker mode="date" date={date} onDateChange={onChangeDate} />
-      <TouchableOpacity
-        onPress={() => {
-          addBirthday({name, date});
-        }}
-        style={styles.button}>
+      <TouchableOpacity onPress={onPressSave} style={styles.button}>
         <Text style={styles.buttonText}>Save</Text>
       </TouchableOpacity>
     </View>

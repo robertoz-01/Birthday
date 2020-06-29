@@ -1,9 +1,11 @@
 import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {Text, StyleSheet, View, TouchableOpacity} from 'react-native';
 import useBirthdayStore from './hooks/useBirthdayStore';
+import {useNavigation} from '@react-navigation/native';
 
 export default function BirthdayList() {
   const {birthdays} = useBirthdayStore();
+  const navigation = useNavigation();
 
   return (
     <>
@@ -22,6 +24,11 @@ export default function BirthdayList() {
           );
         })}
       </View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Birthday Form Modal')}
+        style={styles.button}>
+        <Text style={styles.buttonText}>Add a birthday</Text>
+      </TouchableOpacity>
     </>
   );
 }
@@ -47,5 +54,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 5,
     marginBottom: 5,
+  },
+  button: {
+    marginTop: 30,
+    backgroundColor: '#fafaf0',
+    padding: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  buttonText: {
+    fontSize: 20,
   },
 });
